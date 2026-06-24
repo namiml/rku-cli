@@ -1,6 +1,4 @@
-# @namiml/rku-cli
-
-**Finally — Roku publishing made easy. From your terminal.**
+# rku is Roku publishing made easy. From your terminal.
 
 Roku has no publish API. `rku` is one. Roku ships channels through a web portal you click through by hand — signing in, linking your account, uploading a `.pkg`, publishing. `rku` drives that portal programmatically, so shipping a channel becomes a command.
 
