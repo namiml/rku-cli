@@ -3,7 +3,13 @@ name: Publish to npm
 # Publishes @namiml/rku-cli when a release lands on main (the release PR pushed
 # from the private source repo bumps package.json + dist; merging it triggers
 # this). Idempotent: skips if there's no built dist or the version is already on
-# npm. Provenance is enabled — this repo is public.
+# npm.
+#
+# Auth is token-less via npm Trusted Publishing (OIDC): npm is configured to
+# trust this repo + this workflow file, so the publish authenticates with the
+# GitHub Actions id-token — no NPM_ACCESS_TOKEN secret. Provenance is automatic.
+# Requires npm >= 11.5 (we install the latest), which Node 22's bundled npm 10
+# predates.
 
 on:
   push:
@@ -27,13 +33,16 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
+
+      # Trusted Publishing (OIDC) needs npm >= 11.5; ensure it regardless of the
+      # version bundled with Node.
+      - name: Use latest npm
+        run: npm install -g npm@latest
 
       # No install needed — npm publish just packs the committed dist/.
       - name: Publish if this is a new version with built artifacts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
         run: |
           set -euo pipefail
           VERSION="$(node -p "require('./package.json').version")"
