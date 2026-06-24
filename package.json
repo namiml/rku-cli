@@ -1,0 +1,42 @@
+{
+  "name": "@namiml/rku-cli",
+  "version": "0.1.1",
+  "description": "Roku publishing made easy, from your terminal — sign in, link your Roku account, and publish Roku channels.",
+  "keywords": [
+    "roku",
+    "roku-channel",
+    "roku-developer",
+    "publish",
+    "deploy",
+    "cli",
+    "rkuhub",
+    "ci"
+  ],
+  "type": "module",
+  "bin": {
+    "rku": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "SEE LICENSE FILE",
+  "author": {
+    "name": "Nami ML Inc.",
+    "email": "hello@namiml.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/namiml/rku-cli.git"
+  },
+  "homepage": "https://www.rku.dev",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "playwright-chromium": "^1.49.1"
+  }
+}
