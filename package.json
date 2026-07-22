@@ -1,6 +1,6 @@
 {
   "name": "@namiml/rku-cli",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Roku publishing made easy, from your terminal — sign in, link your Roku account, and publish Roku channels.",
   "keywords": [
     "roku",
